@@ -23,8 +23,8 @@
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-        <xs:enumeration value="lessThan"/>
-        <xs:enumeration value="moreThan"/>
+        <xs:enumeration value="less than"/>
+        <xs:enumeration value="more than"/>
         <xs:enumeration value="exact"/>
         <xs:enumeration value="approximate"/>
     </xs:restriction>
@@ -113,10 +113,25 @@
     <xs:attribute name="confirmed" type="xs:boolean" default="false"/>
   </xs:complexType>
 
+  <xs:simpleType name="PreferredEffect">
+    <xs:restriction base="bed:ResourceIdentifier">
+        <xs:attribute name="type" type="impact:EffectType"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PreferredLoss">
+    <xs:restriction base="bed:ResourceIdentifier">
+        <xs:attribute name="type" type="impact:LossType"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
   <xs:complexType name="Impacts">
     <xs:sequence>
       <xs:element name="effect" type="impact:Effect" minOccurs="0" maxOccurs="unbounded"/>
       <xs:element name="loss" type="impact:Loss" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="preferredEffectID" type="impact:PreferredEffect" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="preferredLossID" type="impact:PreferredLoss" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
